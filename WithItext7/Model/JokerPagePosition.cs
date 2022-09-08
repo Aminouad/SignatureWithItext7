@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace WithItext7.Model
 {
-    internal class signatureJokerRegion
+    public class JokerPagePosition
     {
         public int Page;
         public Rectangle Position;
+        public bool IsDate;
+
     }
 }

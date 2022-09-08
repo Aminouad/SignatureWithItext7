@@ -25,12 +25,12 @@ namespace WithItext7
       /// <param name="sourceFile">The source PDF file where text to be searched</param>
       /// <param name="newFile">The new destination PDF file which will be saved with replaced text</param>
       /// <param name="textToBeSearched">The text to be searched in the PDF</param>
-        public JokerPagePosition FindAndReplaceFirstJokerWithSignatureFrame(string sourceFile, string newFile, string textToBeSearched)
+        public JokerPagePosition FindAndReplaceFirstJokerWithSignatureFrame(string sourceFile, string newFile, string textToBeSearched, string frameName)
         {
-            return ReplaceFirstJokerWithSignatureFrame(textToBeSearched, newFile, sourceFile);
+            return ReplaceFirstJokerWithSignatureFrame(textToBeSearched, newFile, sourceFile, frameName);
         }
 
-        private JokerPagePosition ReplaceFirstJokerWithSignatureFrame(string textToBeSearched, string outputFilePath, string inputFilePath)
+        private JokerPagePosition ReplaceFirstJokerWithSignatureFrame(string textToBeSearched, string outputFilePath, string inputFilePath,string frameName)
         {
             //TextLocation position = null;
             JokerPagePosition jokerPagePosition = new JokerPagePosition();
@@ -79,8 +79,8 @@ namespace WithItext7
                             //Add Annotation
                             float[] quad = { rect.GetLeft(), rect.GetBottom(), rect.GetRight(), rect.GetBottom()
                                            , rect.GetLeft(), rect.GetTop(), rect.GetRight(), rect.GetTop() };                           
-                            PdfAnnotation annotation = PdfTextMarkupAnnotation.CreateHighLight(rect, quad);
-                            annotation.SetContents(new PdfString("Cadre de signature"));
+                             PdfAnnotation annotation = PdfTextMarkupAnnotation.CreateHighLight(rect, quad);
+                            annotation.SetContents(new PdfString(frameName));
                             annotation.SetColor(new DeviceRgb(217, 217, 217));
                             pdf.GetPage(i).AddAnnotation(annotation);
 
