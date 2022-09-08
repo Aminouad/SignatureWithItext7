@@ -6,7 +6,7 @@ using iText.IO.Image;
 using static iText.Signatures.PdfSigner;
 using static iText.Signatures.PdfSignatureAppearance;
 
-
+//Signature done don't forget to reorder the class jokerPagePosition
 using WithItext7;
 using WithItext7.Model;
 
